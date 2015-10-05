@@ -3,7 +3,7 @@
 class HelloTest
 {
 
-    public function perform( array $params )
+    public function perform(array $params)
     {
         print_r($params);
     }

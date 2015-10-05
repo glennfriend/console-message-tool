@@ -104,8 +104,8 @@ function sendEmail($from, $to, $message, $footer='')
 {
     $mail = new PHPMailer;
     $mail->CharSet  = "utf-8";  
-    $mail->From     = 'message-api@localhost';
-    $mail->FromName = 'Message-API';
+    $mail->From     = 'system';
+    $mail->FromName = 'Console Message Tool';
     $mail->Subject  = "{$from} to you";
     $mail->Body     = $message . $footer;
     $mail->addAddress($to);

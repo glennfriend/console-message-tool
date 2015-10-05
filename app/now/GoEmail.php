@@ -97,8 +97,9 @@ class GoEmail
     }
 
     /**
-     *
+     *  呼叫 curl 之後, 不等待回應
      */
+    /*
     private function curl_post_not_wait( $url, Array $post=array() )
     {
         $curl = curl_init();
@@ -122,6 +123,7 @@ class GoEmail
         curl_exec($curl);
         curl_close($curl);
     }
+    */
 
 }
 
