@@ -24,7 +24,7 @@ document 使用手冊
         msg go-email from=me to=me@gmail.com m="$(tail -n 20 /var/log/apache2/access.log)"
 
 
-    system info
+    if system info have problem, send email to you
 
         - 如果訊息發生異常, 會發送電子郵件
 
