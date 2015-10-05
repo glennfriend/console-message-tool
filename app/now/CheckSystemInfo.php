@@ -1,7 +1,10 @@
 <?php
 
 /**
- *  對特定訊息做處理
+ *  取得特定訊息
+ *  如果訊息有異常 (需要在程式中撰寫)
+ *  會發送 email
+ *
  *  請查閱 document
  */
 class CheckSystemInfo
@@ -73,7 +76,7 @@ class CheckSystemInfo
         // '0%' ~ '100%'
         if ($value) {
             $value = (int) $value;
-            if ($value >= 0) {
+            if ($value >= 80) {
                 $this->_alerts[] = "硬碟容量使用過高, 請注意!";
             }
         }
@@ -101,10 +104,10 @@ class CheckSystemInfo
         }
 
         $messages = [];
-        if (!isset($ports[180])) {
+        if (!isset($ports[80])) {
             $this->_alerts[] = "apache 80 未開啟";
         }
-        if (!isset($ports[13306])) {
+        if (!isset($ports[3306])) {
             $this->_alerts[] = "mysql 3306 未開啟";
         }
     }
