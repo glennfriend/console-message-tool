@@ -54,3 +54,11 @@ Q&A
         apt-get install dos2unix
         dos2unix message.php
 
+    使用 cronjob 的時候, 如果安裝方式是使用 phpbrew, 那麼 php 來源要指定
+
+        */1 * * * *
+        BREWPHP=/root/.phpbrew/php/php-5.*.*/bin/php
+        CONSOLE_MESSAGE=/var/www/console-message-tool
+        BREWPHP $CONSOLE_MESSAGE/message.php check-system-info m="$(php $CONSOLE_MESSAGE/app/bin/get-system-info.php)"
+
+

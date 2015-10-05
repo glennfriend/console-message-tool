@@ -26,7 +26,7 @@ document 使用手冊
 
     if system info have problem, send email to you
 
-        - 如果訊息發生異常, 會發送電子郵件
+        - 如果系統訊息發生異常, 會發送電子郵件
 
         msg check-system-info m="$(php /var/www/console-message-tool/app/bin/get-system-info.php)"
 
