@@ -27,9 +27,10 @@ class GoEmail
             exit;
         }
 
+        $php = Config::get('app.php');
         $executeFile = $this->getSendEmailExecuteFile();
         $param = basename($txt);
-        $command = "php {$executeFile} {$param} > /dev/null 2>&1 &";
+        $command = "{$php} {$executeFile} {$param} > /dev/null 2>&1 &";
 
         // execute & debug
         $output=[];

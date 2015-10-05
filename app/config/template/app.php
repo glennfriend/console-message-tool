@@ -63,4 +63,14 @@ return [
      */
     'login_lifetime' => 10800,
 
+    /**
+     *  呼叫 PHP 的指令
+     *  有時候你可能想要使用其它的版本
+     *
+     *      example
+     *          /root/.phpbrew/php/php-5.5.22/bin/php
+     *
+     */
+    'php' => 'php',
+
 ];
