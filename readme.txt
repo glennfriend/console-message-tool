@@ -21,5 +21,12 @@ document 使用手冊
         - 內容的時間是建立 message 的時間, 不是寄送時間 (如果是正常發送, 兩者可能無差別)
 
         msg go-email from=me to=me@gmail.com m=hi
-        msg go-email from=me to=me@gmail.com m="$(tail /var/log/apache2/access.log)"
+        msg go-email from=me to=me@gmail.com m="$(tail -n 20 /var/log/apache2/access.log)"
+
+
+    system info
+
+        - 如果訊息發生異常, 會發送電子郵件
+
+        msg check-system-info m="$(php /var/www/console-message-tool/app/bin/get-system-info.php)"
 
