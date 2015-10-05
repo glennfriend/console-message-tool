@@ -6,7 +6,6 @@ document 使用手冊
 
     send to Hipchat
 
-        c (channel) : go-hipchat
         m (message) :
         room        : hipchat room
         color       : red  or  %23FF0000
