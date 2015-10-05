@@ -13,7 +13,7 @@ console 使用方式
 ※注意! 再次提醒, 本程式為 localhost only
 程式主要結構
 
-    message.php => 接收 message 的 API 入口
+    message.php => 接收 message 指令
 
     home/
         單純顯示每一筆 message
