@@ -1,4 +1,8 @@
 
+下載專案後進入目錄
+
+    cd /var/www/console-message-tool
+
 設定檔
 
     cp app/config/template/* app/config/
@@ -17,7 +21,12 @@
 
     chmod +x message.php
 
-設定 virtual host
+建立 連接
+
+    ln -s /var/www/console-message-tool/message.php /bin/msg
+
+
+如果需要有界面看訊息, 可以設定 virtual host
     - 注意!! 如果傳遞的訊息為私密的, 請不要未設定密碼就公開位置, 否則所有人都看的到
     - 請設定為 HTTPS
 
@@ -29,9 +38,19 @@
             AllowOverride All
             Order allow,deny
             Allow from 127.0.0.1
+            Allow from 192.168
+            Allow from 10.
             Allow from 你的IP位置
         </Directory>
 
-建立 連接
+Q&A
 
-    ln -s /var/www/console-message-tool/message.php /bin/msg
+    如果執行 php 程式出現 "No such file or directory" 錯誤
+
+        apt-get install php5-cli
+
+    如果執行 php 程式出現有關 ^M 的問題
+
+        apt-get install dos2unix
+        dos2unix message.php
+
