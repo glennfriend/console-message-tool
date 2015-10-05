@@ -1,0 +1,10 @@
+
+install phalcon by phpbrew
+
+    option one
+        phpbrew ext install phalcon
+        phpbrew ext install https://github.com/phalcon/cphalcon
+        phpbrew ext install git@github.com:phalcon/cphalcon.git
+
+    enable
+        phpbrew ext enable phalcon

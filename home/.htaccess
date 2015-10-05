@@ -1,0 +1,47 @@
+##################################################
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /message
+
+    RewriteCond %{REMOTE_HOST} !^127\.0\.0\.1
+    RewriteCond %{REMOTE_HOST} !^192\.168\.
+
+
+    RewriteCond %{REQUEST_URI} !hello-world.html$
+    RewriteRule ^(.*)$ hello-world.html [R=302,L]
+</IfModule>
+
+##################################################
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /msssage/
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^(.*)$ index.php?_url=/$1 [QSA,L]
+</IfModule>
+
+##################################################
+# redirect HTTPS
+#
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{HTTPS} !=on
+    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# linux
+# -> .htaccess
+# -> .git
+<FilesMatch "^\.">
+    Order allow,deny
+    Deny from all
+    Satisfy all
+</FilesMatch>
+
+# ~ tag
+# -> index.php~
+<FilesMatch "~">
+    Order allow,deny
+    Deny from all
+    Satisfy all
+</FilesMatch>

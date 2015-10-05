@@ -1,0 +1,57 @@
+<?php
+
+    $put = '';
+    foreach ( $allChannel as $channel ) {
+        $active = '';
+        if ( $channel == InputBrg::get('channel') ) {
+            $active = 'active';
+        }
+        $url = url('', array('channel'=>$channel));
+        $put .= '<a href="'. $url .'" class="btn btn-default '. $active .'">'. $channel .'</a>';
+        
+    }
+    
+    if ( $put ) {
+        echo '<div class="btn-toolbar" role="toolbar" aria-label="...">'
+            .   $put
+            . '</div>'
+            . '<br>';
+    }
+
+    //
+    if ( !InputBrg::get('channel') ) {
+        return;
+    }
+
+?>
+    <table id="table-index" class="table table-striped table-condensed table-bordered">
+        <thead>
+            <tr>
+                <th style="width:55px;">id</th>
+                <th>message     </th>
+                <th>create_time </th>
+            </tr>
+        </thead>
+        <tbody>
+        <?php foreach ( $messages as $message ) {
+
+            $view = array();
+            $view['id']         = $message->getId();
+            $view['message']    = nl2br(escape( $message->getMessage() ));
+            $view['createTime'] = cc('datetime', $message->getCreateTime() );
+
+            echo <<<EOD
+                <tr>
+                    <td><div class="fam-application-home"></div>{$view['id']}</td>
+                    <td>{$view['message']}</td>
+                    <td>{$view['createTime']}</td>
+                </tr>
+EOD;
+
+        } ?>
+        </tbody>
+    </table>
+
+
+    <?php echo cc('displayPageLimit', $pageLimit ); ?>
+

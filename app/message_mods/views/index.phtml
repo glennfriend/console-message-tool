@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title><?php echo RegisterManager::get('title'); ?></title>
+        <meta name="description" content="">
+        <?php $this->assets->outputCss() ?>
+        <?php $this->assets->outputJs() ?>
+        <script type="text/javascript">
+        </script>
+    </head>
+    <body>
+        <nav>
+            <?php echo block('Navigation'); ?>
+        </nav>
+        <div class="container">
+            <?php echo $this->getContent() ?>
+        </div>
+    </body>
+</html>

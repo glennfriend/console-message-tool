@@ -1,0 +1,37 @@
+
+設定檔
+
+    cp app/config/template/* app/config/
+    編輯所有的設定檔
+
+建立目錄
+
+    mkdir var/cache
+    mkdir var/go-email
+    mkdir var/go-email-done
+    mkdir var/log
+    mkdir var/session
+    chmod -R 777 var/
+
+設定可執行權限
+
+    chmod +x message.php
+
+設定 virtual host
+    - 注意!! 如果傳遞的訊息為私密的, 請不要未設定密碼就公開位置, 否則所有人都看的到
+    - 請設定為 HTTPS
+
+    vi /etc/apache2/sites-available/default-ssl.conf 
+
+        Alias /message /var/www/console-message-tool/home
+        <Directory    "/var/www/console-message-tool/home">
+            Options FollowSymLinks
+            AllowOverride All
+            Order allow,deny
+            Allow from 127.0.0.1
+            Allow from 你的IP位置
+        </Directory>
+
+建立 連接
+
+    ln -s /var/www/console-message-tool/message.php /bin/msg
