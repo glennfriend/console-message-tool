@@ -122,6 +122,15 @@ class LogBrg
         self::write( 'monitor.log', $content );
     }
 
+    /**
+     *  message log
+     */
+    public static function message( $content )
+    {
+        $content = date("Y-m-d H:i:s") .' - '. $content;
+        self::write( 'message.log', $content );
+    }
+
     /* --------------------------------------------------------------------------------
         private
     -------------------------------------------------------------------------------- */

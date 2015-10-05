@@ -53,6 +53,7 @@ if ( $nowFile = getNowFile($params['c']) ) {
 
     $class = ucfirst($params['c']);
     $now = new $class();
+    LogBrg::message("perform {$class}");
     $now->perform($params);
 }
 else {
