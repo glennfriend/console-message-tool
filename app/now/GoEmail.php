@@ -6,6 +6,8 @@
 class GoEmail
 {
 
+    private $_emailSeparateChar = ',';
+
     /**
      *  建立 email 資料檔案
      *  另外呼叫其它程式去執行
@@ -23,12 +25,23 @@ class GoEmail
             $type = 'txt';
         }
 
-        $from = preg_replace('/[^a-zA-Z0-9_\-\@\.]+/', '', $from );
-        $to   = preg_replace('/[^a-zA-Z0-9_\-\@\.]+/', '', $to   );
+        $from = preg_replace('/[^a-zA-Z0-9_\-\@\.]+/',  '', $from );
+        $to   = preg_replace('/[^a-zA-Z0-9_\-\@\.,]+/', '', $to   );
 
         // 建立 email 資料檔案
-        $txt = $this->createTxtPathFile($to);
-        if (!$this->sendTxt($from, $to, $txt, $type, $message)) {
+        $emails = explode($this->_emailSeparateChar, $to );
+        foreach ($emails as $email) {
+            $this->send($from, trim($email), $type, $message);
+        }
+    }
+
+    /**
+     *
+     */
+    private function send($from, $email, $type, $message)
+    {
+        $txt = $this->createTxtPathFile($email);
+        if (!$this->sendTxt($from, $email, $txt, $type, $message)) {
             LogBrg::message("Error: Create email content fail!");
             exit;
         }
@@ -44,9 +57,9 @@ class GoEmail
 
         // 如果有錯誤訊息才寫入
         if ($output[0] || $output[1]) {
-            LogBrg::message("output: ". print_r($output, true));
+            LogBrg::message("Error command : {$command}");
+            LogBrg::message("Error output  : ". print_r($output, true));
         }
-
     }
 
     /**
@@ -55,7 +68,7 @@ class GoEmail
     private function createTxtPathFile($email)
     {
         $prefix =  preg_replace('/[^a-zA-Z0-9_\@\-]+/', '', $email ) . '-';
-        $id = uniqid($prefix) . '.txt';
+        $id = uniqid($prefix, true) . '.txt';
         $pathFile = Config::get('app.base.path') . '/var/go-email/' . $id;
         return $pathFile;
     }

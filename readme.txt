@@ -22,10 +22,11 @@ document 使用手冊
         m (message) :
         from        : 寄件者
         to          : 收件者
+                      多收件者請用 "," 分隔 -> user1@mail.com,user2@mail.com
         type        : txt, pre, html
 
-        msg go-email from=me to=me@gmail.com m=hi
-        msg go-email from=me to=me@gmail.com m="$(tail -n 20 /var/log/apache2/access.log)" type=pre
+        msg go-email from=system to=me@gmail.com m=hi
+        msg go-email from=system to=me@gmail.com m="$(tail -n 20 /var/log/apache2/access.log)" type=pre
 
     read root mail to database
 
