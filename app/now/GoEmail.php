@@ -13,17 +13,23 @@ class GoEmail
      */
     public function perform( array $params )
     {
-        $from    = isset($params['from']) ? $params['from'] : '';
+        LogBrg::message("GoEmail perform");
+        $type    = isset($params['type']) ? $params['type'] : 'txt';
+        $from    = isset($params['from']) ? $params['from'] : 'system';
         $to      = isset($params['to'])   ? $params['to']   : '';
         $message = isset($params['m'])    ? $params['m']    : '';
+
+        if (!in_array($type, ['txt', 'pre', 'html']) {
+            $type = 'txt';
+        }
 
         $from = preg_replace('/[^a-zA-Z0-9_\-\@\.]+/', '', $from );
         $to   = preg_replace('/[^a-zA-Z0-9_\-\@\.]+/', '', $to   );
 
         // 建立 email 資料檔案
         $txt = $this->createTxtPathFile($to);
-        if (!$this->sendTxt($from, $to, $txt, $message)) {
-            echo "Error: Create email content fail!\n";
+        if (!$this->sendTxt($from, $to, $txt, $type, $message)) {
+            LogBrg::message("Error: Create email content fail!");
             exit;
         }
 
@@ -35,8 +41,8 @@ class GoEmail
         // execute & debug
         $output=[];
         exec($command,$output[0],$output[1]);
-        print_r($command);
-        print_r($output);
+        LogBrg::message("command: ". print_r($command, true));
+        LogBrg::message("output: {$output}");
     }
 
     /**
@@ -61,7 +67,7 @@ class GoEmail
     /**
      *  建立 email 資料檔案
      */
-    private function sendTxt($from, $to, $pathFile, $message)
+    private function sendTxt($from, $to, $pathFile, $type, $message)
     {
         $mailContentFooter = "\n--------------------\n"
                            . $this->showTime('America/Los_Angeles') . "\n"
@@ -69,6 +75,7 @@ class GoEmail
                            . $this->showTime('Asia/Taipei')         . "\n";
 
         $info = array(
+            'type'      => $type,
             'from'      => $from,
             'to'        => $to,
             'message'   => $message,

@@ -24,7 +24,7 @@ toLog("start");
 $txt  = getTxt($argv);
 $file = getFile($txt);
 $info = parseFile($file);
-$result = sendEmail( $info->from, $info->to, $info->message, $info->footer );
+$result = sendEmail( $info->from, $info->to, $info->type, $info->message, $info->footer );
 if ( $result ) {
     toLog(" rename");
     removeTxt($txt);
@@ -100,7 +100,7 @@ function parseFile($file)
     return $info;
 }
 
-function sendEmail($from, $to, $message, $footer='')
+function sendEmail($from, $to, $type, $message, $footer='')
 {
     $mail = new PHPMailer;
     $mail->CharSet  = "utf-8";  
@@ -110,6 +110,14 @@ function sendEmail($from, $to, $message, $footer='')
     $mail->Body     = $message . $footer;
     $mail->addAddress($to);
     $mail->isHTML(false);
+
+    if ('html'==$type) {
+        $mail->isHTML(true);
+    }
+    elseif ('pre'==$type) {
+        $mail->Body = '<pre>'. $mail->Body . '<pre>';
+        $mail->isHTML(true);
+    }
 
     if(!$mail->send()) {
         return false;

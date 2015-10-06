@@ -19,13 +19,22 @@ document 使用手冊
         - 所以無法第一時間確認是否成功寄出
         - 內容的時間是建立 message 的時間, 不是寄送時間 (如果是正常發送, 兩者可能無差別)
 
+        m (message) :
+        from        : 寄件者
+        to          : 收件者
+        type        : txt, pre, html
+
         msg go-email from=me to=me@gmail.com m=hi
-        msg go-email from=me to=me@gmail.com m="$(tail -n 20 /var/log/apache2/access.log)"
+        msg go-email from=me to=me@gmail.com m="$(tail -n 20 /var/log/apache2/access.log)" type=pre
+
+    read root mail to database
+
+        - 將 mail 的內容發送到 data
 
 
     if system info have problem, send email to you
 
         - 如果系統訊息發生異常, 會發送電子郵件
 
-        msg check-system-info m="$(php /var/www/console-message-tool/app/bin/get-system-info.php)"
+        msg check-system-info m="$(/usr/bin/env php /var/www/console-message-tool/app/bin/get-system-info.php)"
 
