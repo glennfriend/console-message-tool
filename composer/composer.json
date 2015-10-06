@@ -1,6 +1,7 @@
 {
   "require" : {
     "gorkalaucirica/hipchat-v2-api-client": "1.*",
-    "phpmailer/phpmailer": "~5.2"
+    "phpmailer/phpmailer": "~5.2",
+    "php-mime-mail-parser/php-mime-mail-parser": "2.1.2"
   }
 }
