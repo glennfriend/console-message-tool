@@ -1,0 +1,11 @@
+
+install
+    pecl install mailparse
+
+composer
+    "php-mime-mail-parser/php-mime-mail-parser": "2.1.2"
+
+how to get first mail
+    # 將最舊的一封未讀信設定成已讀, 導出, 執行
+    echo '1' | mail -Ni > /tmp/parse-mail-first.txt
+

@@ -1,0 +1,16 @@
+如果需要有界面看訊息, 可以設定 virtual host
+    - 注意!! 如果傳遞的訊息為私密的, 請不要未設定密碼就公開位置, 否則所有人都看的到
+    - 請設定為 HTTPS
+
+    vi /etc/apache2/sites-available/default-ssl.conf
+
+        Alias /message /var/www/console-message-tool/home
+        <Directory    "/var/www/console-message-tool/home">
+            Options FollowSymLinks
+            AllowOverride All
+            Order allow,deny
+            Allow from 127.0.0.1
+            Allow from 192.168
+            Allow from 10.
+            Allow from 你的IP位置
+        </Directory>
