@@ -59,6 +59,6 @@ Q&A
         */1 * * * *
         PHPB=/root/.phpbrew/php/php-5.5.22/bin/php
         CONSOLE_MESSAGE=/var/www/console-message-tool
-        $PHPB $CONSOLE_MESSAGE/message.php check-system-info m="$(php $CONSOLE_MESSAGE/app/bin/get-system-info.php)"
+        $PHPB $CONSOLE_MESSAGE/message.php check-system-info m="$($PHPB $CONSOLE_MESSAGE/app/bin/get-system-info.php)"
 
 

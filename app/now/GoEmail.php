@@ -41,7 +41,12 @@ class GoEmail
         // execute & debug
         $output=[];
         exec($command,$output[0],$output[1]);
-        LogBrg::message("output: ". print_r($output, true));
+
+        // 如果有錯誤訊息才寫入
+        if ($output[0] || $output[1]) {
+            LogBrg::message("output: ". print_r($output, true));
+        }
+
     }
 
     /**

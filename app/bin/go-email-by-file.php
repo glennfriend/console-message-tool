@@ -5,7 +5,7 @@
  *  則發送該內容
  *  發送成功後, 會歸檔, 未真正刪除檔案
  */
-define('APP_PORTAL','home');  // message ??????
+define('APP_PORTAL','message');
 
 try {
     require_once dirname(__DIR__).'/init.php';
