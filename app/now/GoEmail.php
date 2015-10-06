@@ -19,7 +19,7 @@ class GoEmail
         $to      = isset($params['to'])   ? $params['to']   : '';
         $message = isset($params['m'])    ? $params['m']    : '';
 
-        if (!in_array($type, ['txt', 'pre', 'html']) {
+        if (!in_array($type, ['txt', 'pre', 'html'])) {
             $type = 'txt';
         }
 
@@ -41,8 +41,7 @@ class GoEmail
         // execute & debug
         $output=[];
         exec($command,$output[0],$output[1]);
-        LogBrg::message("command: ". print_r($command, true));
-        LogBrg::message("output: {$output}");
+        LogBrg::message("output: ". print_r($output, true));
     }
 
     /**
