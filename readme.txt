@@ -30,8 +30,11 @@ document 使用手冊
 
     read root mail to database
 
-        - 將 mail 的內容發送到 data
+        - 將 mail 的內容發送到程式中, 做即時的處理
 
+        1/* * * * *
+            echo '1' | mail -Ni > /tmp/root-mail-first.txt
+            msg parse-mail m="$(cat /tmp/root-mail-first.txt)"
 
     if system info have problem, send email to you
 
