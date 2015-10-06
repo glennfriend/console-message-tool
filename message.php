@@ -140,6 +140,7 @@ function display($errorId)
     echo json_encode(array(
         'error' => $errorId
     ));
+    LogBrg::message("Display Error: {$errorId}");
     exit;
 }
 
