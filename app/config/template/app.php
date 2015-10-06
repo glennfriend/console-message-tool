@@ -68,9 +68,10 @@ return [
      *  有時候你可能想要使用其它的版本
      *
      *      example
+     *          /usr/bin/env php
      *          /root/.phpbrew/php/php-5.5.22/bin/php
      *
      */
-    'php' => 'php',
+    'php' => '/usr/bin/env php',
 
 ];
