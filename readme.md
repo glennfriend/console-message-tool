@@ -23,7 +23,9 @@ msg go-hipchat room=test m=hi
     m (message) :
     room        : room name
     username    : username
+```
 
+```sh
 msg go-slack room=#test m="hello world"
 ```
 
@@ -39,7 +41,9 @@ msg go-slack room=#test m="hello world"
     to          : 收件者
                   多收件者請用 "," 分隔 -> user1@mail.com,user2@mail.com
     type        : txt, pre, html
+```
 
+```sh
 msg go-email from=system to=me@gmail.com m=hi
 msg go-email from=system to=me@gmail.com m="$(tail -n 20 /var/log/apache2/access.log)" type=pre
 ```
