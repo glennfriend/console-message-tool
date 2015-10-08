@@ -48,6 +48,14 @@ msg go-email from=system to=me@gmail.com m=hi
 msg go-email from=system to=me@gmail.com m="$(tail -n 20 /var/log/apache2/access.log)" type=pre
 ```
 
+## access gmail
+
+    - 使用 imap 讀取 gmail inbox
+
+```sh
+    msg access-gmail
+```
+
 ## read root-mail
 
     - 將 mail 的內容發送到程式中, 做即時的處理
