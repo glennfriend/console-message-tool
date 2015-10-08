@@ -1,4 +1,4 @@
-#document 使用手冊
+#Document
 
 ## send message to "test" channel
 
@@ -51,6 +51,7 @@ msg go-email from=system to=me@gmail.com m="$(tail -n 20 /var/log/apache2/access
 ## access gmail
 
     - 使用 imap 讀取 gmail inbox
+    - 每次讀取, 都會將信件設定為 已讀 狀態
 
 ```sh
     msg access-gmail
