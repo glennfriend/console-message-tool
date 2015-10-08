@@ -25,10 +25,9 @@ class GoSlack
         try {
             $slack = new Slack($token);
             $slack->call('chat.postMessage', array(
-                'channel'       => $room,
-                'text'          => $message,
-                'username'      => $username,
-
+                'channel'   => $room,
+                'text'      => $message,
+                'username'  => $username,
             ));
         } catch (Exception $e) {
             print_r($e);

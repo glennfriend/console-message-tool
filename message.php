@@ -38,9 +38,12 @@ $params = filterParams($params);
 if ( !$params['c'] ) {
     display(101);
 }
+/*
 if ( !$params['m'] ) {
     display(102);
 }
+*/
+
 
 // --------------------------------------------------------------------------------
 // process

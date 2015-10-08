@@ -11,9 +11,7 @@ class ParseMail
 {
 
     /**
-     *  建立 email 資料檔案
-     *  另外呼叫其它程式去執行
-     *  該發送方式 不需要 等待發送 的 時間
+     *
      */
     public function perform(array $params)
     {
